@@ -1,0 +1,25 @@
+# Dev / local
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.git/
+.gitignore
+*.md
+!README.md
+
+# Secrets and deploy-local files
+.env*
+registry.selectel
+ingress_host
+.mcp.json
+creds/
+k8s/
+openspec/
+scripts/deploy-k8s.sh
+scripts/pack-mcpb.sh
+dist/
+research/

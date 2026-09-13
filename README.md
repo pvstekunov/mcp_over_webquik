@@ -45,6 +45,23 @@ pip install -e .
 }
 ```
 
+## Установка расширения (.mcpb / .dxt)
+
+One-click bundle для Claude Desktop и других MCPB-клиентов ([формат MCP Bundle](https://github.com/modelcontextprotocol/mcpb)):
+
+```bash
+./scripts/pack-mcpb.sh
+```
+
+Готовые файлы:
+
+- [`dist/mcp-over-webquik.mcpb`](dist/mcp-over-webquik.mcpb) — текущая версия
+- [`dist/mcp-over-webquik.dxt`](dist/mcp-over-webquik.dxt) — то же самое (legacy-имя)
+
+Откройте `.mcpb` в Claude Desktop (двойной клик или перетаскивание). После установки вызовите `login`, затем при необходимости `submit_pin`.
+
+Исходники манифеста: [`extension/manifest.json`](extension/manifest.json).
+
 ## Настройка Claude Code
 
 Скачать конфиг с сервера:

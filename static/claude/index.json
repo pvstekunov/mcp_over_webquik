@@ -3,6 +3,10 @@
   "mcp_endpoint": "https://webquik-sber-mcp.petrstekunov.ru/mcp",
   "health": "https://webquik-sber-mcp.petrstekunov.ru/health",
   "files": {
+    "mcp-over-webquik.mcpb": {
+      "path": "https://github.com/pvstekunov/mcp_over_webquik/raw/main/dist/mcp-over-webquik.mcpb",
+      "description": "MCP Bundle for Claude Desktop (one-click install)"
+    },
     "mcp.json": {
       "path": "/claude/mcp.json",
       "description": "Claude Code project MCP config (.mcp.json)"

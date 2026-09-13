@@ -132,6 +132,16 @@ The system SHALL support streamable HTTP transport with stateful sessions (`stat
 - WHEN a client connects to `/mcp` over HTTPS
 - THEN MCP session ID binds webQUIK SessionStore entries per client
 
+### Requirement: MCP Bundle for desktop install
+
+The repository SHALL include `extension/manifest.json` and `scripts/pack-mcpb.sh` producing `.mcpb` and legacy `.dxt` bundles in `dist/` for Claude Desktop and other MCPB clients (UV stdio runtime).
+
+#### Scenario: Pack desktop bundle
+
+- GIVEN repository sources and `extension/manifest.json`
+- WHEN `./scripts/pack-mcpb.sh` runs
+- THEN versioned `dist/mcp-over-webquik-{version}.mcpb` and `.dxt` are created
+
 ### Requirement: Container image with embedded CA
 
 The Docker image SHALL include Sber CA certificates at `/app/certs/sberca-chain.pem` and set `WEBQUIK_CA_BUNDLE` accordingly.

@@ -1,0 +1,83 @@
+{
+  "manifest_version": "0.4",
+  "name": "mcp-over-webquik",
+  "display_name": "webQUIK (Sber)",
+  "version": "0.1.5",
+  "description": "MCP server for Sberbank webQUIK trading terminal",
+  "long_description": "Connect AI assistants to **webQUIK** (webquik.sberbank.ru): portfolio, quotes, orders, and trading.\n\nEach client session is isolated. Call `login` with your broker account number and password, then `submit_pin` if SMS verification is required.\n\nBundled Sber CA certificates are used for TLS to webQUIK.",
+  "author": {
+    "name": "Petr Stekunov",
+    "url": "https://github.com/pvstekunov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pvstekunov/mcp_over_webquik"
+  },
+  "homepage": "https://github.com/pvstekunov/mcp_over_webquik",
+  "documentation": "https://github.com/pvstekunov/mcp_over_webquik#readme",
+  "support": "https://github.com/pvstekunov/mcp_over_webquik/issues",
+  "license": "MIT",
+  "keywords": ["webquik", "sber", "trading", "broker", "portfolio", "mcp"],
+  "privacy_policies": ["https://webquik.sberbank.ru"],
+  "server": {
+    "type": "uv",
+    "entry_point": "src/mcp_over_quik/server.py",
+    "mcp_config": {
+      "command": "uv",
+      "args": ["run", "--directory", "${__dirname}", "mcp-over-quik"],
+      "env": {
+        "MCP_TRANSPORT": "stdio",
+        "WEBQUIK_HOST": "webquik.sberbank.ru",
+        "WEBQUIK_CA_BUNDLE": "${user_config.ca_bundle}",
+        "WEBQUIK_SSL_VERIFY": "${user_config.ssl_verify}"
+      }
+    }
+  },
+  "user_config": {
+    "ca_bundle": {
+      "type": "file",
+      "title": "Custom CA bundle",
+      "description": "Optional PEM file for webQUIK TLS. Leave empty to use bundled Sber CA certificates.",
+      "required": false
+    },
+    "ssl_verify": {
+      "type": "boolean",
+      "title": "SSL verify",
+      "description": "Verify webQUIK TLS certificates. Disable only for local debugging.",
+      "default": true,
+      "required": false
+    }
+  },
+  "tools": [
+    { "name": "login", "description": "Log in to webQUIK with broker account and password" },
+    { "name": "submit_pin", "description": "Submit SMS or PIN code after login" },
+    { "name": "logout", "description": "Log out and remove the session" },
+    { "name": "session_status", "description": "Show current webQUIK session status" },
+    { "name": "webquik_list_classes", "description": "List instrument class codes" },
+    { "name": "webquik_search_securities", "description": "Search securities by name or ticker" },
+    { "name": "webquik_get_portfolio", "description": "Get portfolio positions and cash" },
+    { "name": "webquik_get_orders", "description": "List active orders" },
+    { "name": "webquik_get_trades", "description": "List recent trades" },
+    { "name": "webquik_get_limits", "description": "Get money and depo limits" },
+    { "name": "webquik_get_quotes", "description": "Get order book quotes for a security" },
+    { "name": "webquik_get_security_info", "description": "Get instrument parameters" },
+    { "name": "webquik_send_order", "description": "Place a limit or market order" },
+    { "name": "webquik_cancel_order", "description": "Cancel an active order" }
+  ],
+  "prompts": [
+    {
+      "name": "webquik_session",
+      "description": "Start a webQUIK session and show portfolio",
+      "text": "Connect to webQUIK: call login with my broker credentials. If pin_required, ask me for the SMS code and call submit_pin. Then show portfolio summary with webquik_get_portfolio."
+    }
+  ],
+  "tools_generated": false,
+  "prompts_generated": false,
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "python": ">=3.11,<4"
+    }
+  }
+}
