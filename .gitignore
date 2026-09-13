@@ -4,6 +4,7 @@ __pycache__/
 .venv/
 venv/
 dist/*
+!dist/
 !dist/mcp-over-webquik*.mcpb
 !dist/mcp-over-webquik*.dxt
 build/
