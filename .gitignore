@@ -1,0 +1,65 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local environment and secrets
+creds
+.env
+.env.*
+!.env.example
+*.env
+!*.env.example
+
+# Registry / deploy credentials (never commit)
+registry.selectel
+*.selectel
+!*.selectel.example
+ingress_host
+kubeconfig
+.kube/
+docker-config.json
+.dockerconfigjson
+*dockerconfigjson*
+
+# Local MCP configs with personal endpoints
+.mcp.json
+/mcp.json
+
+# Private keys and credential dumps
+*.key
+*.p12
+*.pfx
+*.secret
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+credentials.json
+*credentials*
+!*credentials*.example
+secrets.yaml
+**/secrets.yaml
+**/*-secret.yaml
+
+# Private certs; keep public CA bundles in certs/
+*.pem
+!certs/*.pem
+
+# OS / editor
+.DS_Store
+.idea/
+*.swp
+*~
+
+# Local research dumps
+research/

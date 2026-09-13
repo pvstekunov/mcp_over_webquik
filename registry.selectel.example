@@ -1,0 +1,11 @@
+
+registry:
+  name: selectel
+  url: https://cr.selcloud.ru
+  path: cr.selcloud.ru/your-namespace/mcp-over-quik
+  push:
+    username: token
+    password: YOUR_PUSH_TOKEN
+  pull:
+    username: token
+    password: YOUR_PULL_TOKEN

@@ -1,0 +1,23 @@
+{
+  "service": "webquik-mcp",
+  "mcp_endpoint": "https://webquik-sber-mcp.petrstekunov.ru/mcp",
+  "health": "https://webquik-sber-mcp.petrstekunov.ru/health",
+  "files": {
+    "mcp.json": {
+      "path": "/claude/mcp.json",
+      "description": "Claude Code project MCP config (.mcp.json)"
+    },
+    "CLAUDE.md": {
+      "path": "/claude/CLAUDE.md",
+      "description": "Claude Code project instructions"
+    },
+    "cursor-mcp.json": {
+      "path": "/claude/cursor-mcp.json",
+      "description": "Cursor MCP config snippet"
+    }
+  },
+  "install": {
+    "claude_code": "curl -fsSL https://webquik-sber-mcp.petrstekunov.ru/claude/mcp.json -o .mcp.json",
+    "claude_instructions": "curl -fsSL https://webquik-sber-mcp.petrstekunov.ru/claude/CLAUDE.md -o .claude/CLAUDE.md"
+  }
+}

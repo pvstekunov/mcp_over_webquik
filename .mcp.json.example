@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "webquik": {
+      "type": "http",
+      "url": "https://webquik-sber-mcp.petrstekunov.ru/mcp",
+      "timeout": 120000
+    },
+    "webquik-local": {
+      "command": "${WEBQUIK_MCP_BIN:-/absolute/path/to/mcp_over_quik/.venv/bin/mcp-over-quik}",
+      "env": {
+        "WEBQUIK_CA_BUNDLE": "${WEBQUIK_CA_BUNDLE:-/absolute/path/to/mcp_over_quik/certs/sberca-chain.pem}"
+      }
+    }
+  }
+}

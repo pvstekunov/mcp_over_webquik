@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "webquik-local": {
+      "command": "/absolute/path/to/mcp_over_quik/.venv/bin/mcp-over-quik"
+    },
+    "webquik-remote": {
+      "type": "http",
+      "url": "https://webquik-sber-mcp.petrstekunov.ru/mcp"
+    }
+  }
+}

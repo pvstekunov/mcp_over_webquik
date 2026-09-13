@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "webquik": {
+      "type": "http",
+      "url": "https://webquik-sber-mcp.petrstekunov.ru/mcp",
+      "timeout": 120000
+    }
+  }
+}

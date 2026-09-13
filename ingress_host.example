@@ -1,0 +1,2 @@
+ingress_host: mcp.example.com
+ingress_port: 443

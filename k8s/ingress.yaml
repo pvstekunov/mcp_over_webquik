@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: webquik-mcp
+  namespace: infra
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-buffering: "off"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  labels:
+    app.kubernetes.io/name: webquik-mcp
+    app.kubernetes.io/component: mcp
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - webquik-sber-mcp.petrstekunov.ru
+      secretName: webquik-sber-mcp-petrstekunov-ru-tls
+  rules:
+    - host: webquik-sber-mcp.petrstekunov.ru
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: webquik-mcp
+                port:
+                  number: 3001

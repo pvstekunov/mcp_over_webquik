@@ -1,0 +1,36 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: webquik-mcp-build
+  namespace: infra
+spec:
+  ttlSecondsAfterFinished: 3600
+  backoffLimit: 1
+  template:
+    spec:
+      restartPolicy: Never
+      imagePullSecrets:
+        - name: craas-auth
+      volumes:
+        - name: src
+          configMap:
+            name: webquik-mcp-src
+        - name: docker-config
+          secret:
+            secretName: craas-auth
+            items:
+              - key: .dockerconfigjson
+                path: config.json
+      containers:
+        - name: kaniko
+          image: gcr.io/kaniko-project/executor:v1.23.2
+          args:
+            - --dockerfile=/workspace/Dockerfile
+            - --context=dir:///workspace
+            - --destination=cr.selcloud.ru/pitr/ru.profinansy/infra/webquik-mcp:v0.1.0
+            - --cache=false
+          volumeMounts:
+            - name: src
+              mountPath: /workspace
+            - name: docker-config
+              mountPath: /kaniko/.docker

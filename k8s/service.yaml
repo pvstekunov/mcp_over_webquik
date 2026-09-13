@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webquik-mcp
+  namespace: infra
+  labels:
+    app.kubernetes.io/name: webquik-mcp
+    app.kubernetes.io/component: mcp
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: webquik-mcp
+  ports:
+    - name: http
+      port: 3001
+      targetPort: http
